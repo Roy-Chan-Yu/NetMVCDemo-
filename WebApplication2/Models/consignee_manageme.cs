@@ -20,6 +20,7 @@ namespace WebApplication2.Models
         public string consignee_address { get; set; }
         public string consignee_code { get; set; }
         public string cinsignee_phone { get; set; }
+        [DataType(DataType.Date)]
         /*[DisplayFormat(DataFormatString = "{yyyy-MM-dd}", ApplyFormatInEditMode = true*/)]
         public int user_info_user_id { get; set; }
 
