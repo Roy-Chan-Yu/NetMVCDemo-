@@ -45,9 +45,9 @@ namespace WebApplication2.Controllers
                 return HttpNotFound();
             }
 
-            var item = db.consignee_manageme.Find(id.Value);
+            var item = db.consignee_manageme.Find(id);
 
-            ViewBag.user_info_user_id = new SelectList(db.user_info, "user_id", "user_name");
+            ViewBag.user_info_user_id = new SelectList(db.user_info, "user_id", "user_name", item.user_info_user_id);
 
             return View(item);
         }
