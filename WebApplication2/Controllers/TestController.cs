@@ -71,5 +71,23 @@ namespace WebApplication2.Controllers
             return View(payload);
         }
 
+        public ActionResult Delete(int id)
+        {
+            var payLoad = data.FirstOrDefault(p => p.Id == id);
+            return View(payLoad);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection form)
+        {
+
+            var payLoad = data.FirstOrDefault(p => p.Id == id);
+            data.Remove(payLoad);
+            return RedirectToAction("Index");
+
+            //return View(person);
+        }
+
+
     }
 }
