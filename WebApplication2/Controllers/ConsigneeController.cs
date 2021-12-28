@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Omu.ValueInjecter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -53,17 +54,18 @@ namespace WebApplication2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, consignee_manageme cons)
+        public ActionResult Edit(int id, consignee_manageme_edit cons)
         {
             if (ModelState.IsValid)
             {
                 var item = db.consignee_manageme.Find(id);
 
-                item.consignee_name = cons.consignee_name;
-                item.consignee_address = cons.consignee_address;
-                item.consignee_code = cons.consignee_code;
-                item.cinsignee_phone = cons.cinsignee_phone;
-                item.user_info_user_id = cons.user_info_user_id;
+                item.InjectFrom(cons);
+                //item.consignee_name = cons.consignee_name;
+                //item.consignee_address = cons.consignee_address;
+                //item.consignee_code = cons.consignee_code;
+                //item.cinsignee_phone = cons.cinsignee_phone;
+                //item.user_info_user_id = cons.user_info_user_id;
 
                 db.SaveChanges();
                 return RedirectToAction("Index");
