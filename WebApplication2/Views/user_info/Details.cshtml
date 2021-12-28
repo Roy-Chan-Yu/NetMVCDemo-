@@ -1,0 +1,58 @@
+﻿@model WebApplication2.Models.user_info
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>user_info</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.user_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_pw)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_pw)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_state)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_state)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.user_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ContosoUniversityModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="consignee_manageme">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="consignee_name" Type="varchar" MaxLength="50" />
+          <Property Name="consignee_address" Type="varchar" MaxLength="1000" />
+          <Property Name="consignee_code" Type="varchar" MaxLength="10" />
+          <Property Name="cinsignee_phone" Type="varchar" MaxLength="11" />
+          <Property Name="user_info_user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="goods_info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Price" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="url" Type="varchar" MaxLength="1000" />
+          <Property Name="describe" Type="varchar" MaxLength="2000" />
+          <Property Name="state" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="user_info">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="user_name" Type="varchar" MaxLength="45" />
+          <Property Name="user_sex" Type="varchar" MaxLength="10" />
+          <Property Name="user_phone" Type="varchar" MaxLength="11" />
+          <Property Name="user_pw" Type="varchar" MaxLength="100" />
+          <Property Name="user_state" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_consignee_manageme">
+          <End Role="user_info" Type="Self.user_info" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="consignee_manageme" Type="Self.consignee_manageme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_info">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="consignee_manageme">
+              <PropertyRef Name="user_info_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ContosoUniversityModel1StoreContainer">
+          <EntitySet Name="consignee_manageme" EntityType="Self.consignee_manageme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="goods_info" EntityType="Self.goods_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_info" EntityType="Self.user_info" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_consignee_manageme" Association="Self.FK_consignee_manageme">
+            <End Role="user_info" EntitySet="user_info" />
+            <End Role="consignee_manageme" EntitySet="consignee_manageme" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ContosoUniversityModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="consignee_manageme">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="consignee_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="consignee_address" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="consignee_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cinsignee_phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="user_info_user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user_info" Relationship="Self.FK_consignee_manageme" FromRole="consignee_manageme" ToRole="user_info" />
+        </EntityType>
+        <EntityType Name="goods_info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="url" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="describe" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="user_info">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="user_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="user_sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="user_phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="user_pw" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_state" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="consignee_manageme" Relationship="Self.FK_consignee_manageme" FromRole="user_info" ToRole="consignee_manageme" />
+        </EntityType>
+        <Association Name="FK_consignee_manageme">
+          <End Role="user_info" Type="Self.user_info" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="consignee_manageme" Type="Self.consignee_manageme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_info">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="consignee_manageme">
+              <PropertyRef Name="user_info_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ContosoUniversityEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="consignee_manageme" EntityType="Self.consignee_manageme" />
+          <EntitySet Name="goods_info" EntityType="Self.goods_info" />
+          <EntitySet Name="user_info" EntityType="Self.user_info" />
+          <AssociationSet Name="FK_consignee_manageme" Association="Self.FK_consignee_manageme">
+            <End Role="user_info" EntitySet="user_info" />
+            <End Role="consignee_manageme" EntitySet="consignee_manageme" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ContosoUniversityModel1StoreContainer" CdmEntityContainer="ContosoUniversityEntities2">
+          <EntitySetMapping Name="consignee_manageme">
+            <EntityTypeMapping TypeName="ContosoUniversityModel1.consignee_manageme">
+              <MappingFragment StoreEntitySet="consignee_manageme">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="consignee_name" ColumnName="consignee_name" />
+                <ScalarProperty Name="consignee_address" ColumnName="consignee_address" />
+                <ScalarProperty Name="consignee_code" ColumnName="consignee_code" />
+                <ScalarProperty Name="cinsignee_phone" ColumnName="cinsignee_phone" />
+                <ScalarProperty Name="user_info_user_id" ColumnName="user_info_user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="goods_info">
+            <EntityTypeMapping TypeName="ContosoUniversityModel1.goods_info">
+              <MappingFragment StoreEntitySet="goods_info">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="describe" ColumnName="describe" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_info">
+            <EntityTypeMapping TypeName="ContosoUniversityModel1.user_info">
+              <MappingFragment StoreEntitySet="user_info">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="user_sex" ColumnName="user_sex" />
+                <ScalarProperty Name="user_phone" ColumnName="user_phone" />
+                <ScalarProperty Name="user_pw" ColumnName="user_pw" />
+                <ScalarProperty Name="user_state" ColumnName="user_state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
