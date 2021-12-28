@@ -30,6 +30,7 @@ namespace WebApplication2.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Person person)
         {
             if (ModelState.IsValid)
