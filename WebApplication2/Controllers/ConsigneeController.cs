@@ -26,7 +26,7 @@ namespace WebApplication2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(consignee_manageme cons)
+        public ActionResult Create([Bind(Include = "Id, consignee_name, consignee_address, consignee_code,consignee_phone,user_info_user_id,Memo")]consignee_manageme cons)
         {
             if (ModelState.IsValid)
             {

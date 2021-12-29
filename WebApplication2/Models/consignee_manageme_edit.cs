@@ -12,5 +12,7 @@ namespace WebApplication2.Models
         public string consignee_address { get; set; }
         public string consignee_code { get; set; }
         public virtual user_info user_info { get; set; }
+
+        public string Memo { get; set; }
     }
 }
