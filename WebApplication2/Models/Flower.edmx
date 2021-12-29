@@ -1,0 +1,967 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ContosoUniversityModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BoughtFlower">
+          <Key>
+            <PropertyRef Name="BuyID" />
+            <PropertyRef Name="FlowerID" />
+            <PropertyRef Name="Number" />
+          </Key>
+          <Property Name="BuyID" Type="int" Nullable="false" />
+          <Property Name="FlowerID" Type="int" Nullable="false" />
+          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" />
+        </EntityType>
+        <EntityType Name="Buy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Greenhouse_ID" Type="int" />
+          <Property Name="SalesPerson_ID" Type="varchar" MaxLength="10" />
+          <Property Name="Total_peyment" Type="int" />
+          <Property Name="Buy_date" Type="date" />
+        </EntityType>
+        <EntityType Name="Colour">
+          <Key>
+            <PropertyRef Name="color_ID" />
+          </Key>
+          <Property Name="color_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="color_name" Type="varchar" MaxLength="20" />
+          <Property Name="Hex_Code" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="20" />
+          <Property Name="last_name" Type="varchar" MaxLength="20" />
+          <Property Name="Addess" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="15" />
+          <Property Name="birthdate" Type="date" />
+          <Property Name="gender" Type="varchar" MaxLength="8" />
+          <Property Name="total_purchase" Type="int" />
+        </EntityType>
+        <EntityType Name="Flower">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Flower_name" Type="varchar" MaxLength="30" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Flower_color_ID" Type="int" />
+          <Property Name="Lasting_Time" Type="int" />
+          <Property Name="Number" Type="int" />
+          <Property Name="Type_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="FlowersInOrder">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+            <PropertyRef Name="Flower_ID" />
+          </Key>
+          <Property Name="Order_ID" Type="int" Nullable="false" />
+          <Property Name="Flower_ID" Type="int" Nullable="false" />
+          <Property Name="Number" Type="int" />
+          <Property Name="Price" Type="int" />
+        </EntityType>
+        <EntityType Name="FlowerType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="20" />
+          <Property Name="WaterDescription" Type="varchar" MaxLength="200" />
+          <Property Name="LightDescription" Type="varchar" MaxLength="200" />
+          <Property Name="More_Info" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="GreenHouse">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="20" />
+          <Property Name="Manager" Type="varchar" MaxLength="20" />
+          <Property Name="Owner" Type="varchar" MaxLength="20" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="GreenHousePhones">
+          <Key>
+            <PropertyRef Name="GreenHouse_ID" />
+            <PropertyRef Name="Manager_phone" />
+          </Key>
+          <Property Name="GreenHouse_ID" Type="int" Nullable="false" />
+          <Property Name="Manager_phone" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="phone1" Type="varchar" MaxLength="15" />
+          <Property Name="phone2" Type="varchar" MaxLength="15" />
+          <Property Name="phone3" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Occasion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="20" />
+          <Property Name="Occasion_Description" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_ID" Type="int" />
+          <Property Name="Order_type" Type="varchar" MaxLength="10" />
+          <Property Name="Shop_date" Type="date" />
+          <Property Name="Occasion_ID" Type="int" />
+          <Property Name="Package_ID" Type="int" />
+          <Property Name="Wrapping_price" Type="int" />
+          <Property Name="Total_Cost" Type="int" />
+          <Property Name="Discount" Type="int" />
+          <Property Name="Final_Cost" Type="int" />
+          <Property Name="More_info" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Packaging">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Packag_Type" Type="varchar" MaxLength="20" />
+          <Property Name="Paper_Color_ID" Type="int" />
+          <Property Name="String_Color_ID" Type="int" />
+          <Property Name="Design" Type="varchar" MaxLength="20" />
+          <Property Name="Package_Description" Type="varchar" MaxLength="100" />
+          <Property Name="Card" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="SalesPerson">
+          <Key>
+            <PropertyRef Name="PersonnelCode" />
+          </Key>
+          <Property Name="PersonnelCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="20" />
+          <Property Name="last_name" Type="varchar" MaxLength="20" />
+          <Property Name="national_code" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="working_hour" Type="varchar" MaxLength="20" />
+          <Property Name="role" Type="varchar" MaxLength="20" />
+          <Property Name="salary" Type="int" />
+          <Property Name="birthdate" Type="date" />
+          <Property Name="gender" Type="varchar" MaxLength="8" />
+          <Property Name="hiring_date" Type="date" />
+          <Property Name="Mobile_number" Type="varchar" MaxLength="15" />
+          <Property Name="Home_phonenum" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <Association Name="FK__BoughtFlo__BuyID__74AE54BC">
+          <End Role="Buy" Type="Self.Buy" Multiplicity="1" />
+          <End Role="BoughtFlower" Type="Self.BoughtFlower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buy">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BoughtFlower">
+              <PropertyRef Name="BuyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BoughtFlo__Flowe__75A278F5">
+          <End Role="Flower" Type="Self.Flower" Multiplicity="1" />
+          <End Role="BoughtFlower" Type="Self.BoughtFlower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flower">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BoughtFlower">
+              <PropertyRef Name="FlowerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buy__Greenhouse___5EBF139D">
+          <End Role="GreenHouse" Type="Self.GreenHouse" Multiplicity="0..1" />
+          <End Role="Buy" Type="Self.Buy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GreenHouse">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Buy">
+              <PropertyRef Name="Greenhouse_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buy__SalesPerson__5FB337D6">
+          <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="0..1" />
+          <End Role="Buy" Type="Self.Buy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesPerson">
+              <PropertyRef Name="PersonnelCode" />
+            </Principal>
+            <Dependent Role="Buy">
+              <PropertyRef Name="SalesPerson_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flower__Flower_c__693CA210">
+          <End Role="Colour" Type="Self.Colour" Multiplicity="0..1" />
+          <End Role="Flower" Type="Self.Flower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colour">
+              <PropertyRef Name="color_ID" />
+            </Principal>
+            <Dependent Role="Flower">
+              <PropertyRef Name="Flower_color_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flower__Type_ID__68487DD7">
+          <End Role="FlowerType" Type="Self.FlowerType" Multiplicity="0..1" />
+          <End Role="Flower" Type="Self.Flower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlowerType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Flower">
+              <PropertyRef Name="Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FlowersIn__Flowe__797309D9">
+          <End Role="Flower" Type="Self.Flower" Multiplicity="1" />
+          <End Role="FlowersInOrder" Type="Self.FlowersInOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flower">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FlowersInOrder">
+              <PropertyRef Name="Flower_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GreenHous__Green__5BE2A6F2">
+          <End Role="GreenHouse" Type="Self.GreenHouse" Multiplicity="1" />
+          <End Role="GreenHousePhones" Type="Self.GreenHousePhones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GreenHouse">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GreenHousePhones">
+              <PropertyRef Name="GreenHouse_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order__Customer___6D0D32F4">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Customer_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order__Occasion___6EF57B66">
+          <End Role="Occasion" Type="Self.Occasion" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Occasion">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Occasion_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order__Package_I__6E01572D">
+          <End Role="Packaging" Type="Self.Packaging" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packaging">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Package_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Packaging__Paper__6477ECF3">
+          <End Role="Colour" Type="Self.Colour" Multiplicity="0..1" />
+          <End Role="Packaging" Type="Self.Packaging" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colour">
+              <PropertyRef Name="color_ID" />
+            </Principal>
+            <Dependent Role="Packaging">
+              <PropertyRef Name="Paper_Color_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Packaging__Strin__656C112C">
+          <End Role="Colour" Type="Self.Colour" Multiplicity="0..1" />
+          <End Role="Packaging" Type="Self.Packaging" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colour">
+              <PropertyRef Name="color_ID" />
+            </Principal>
+            <Dependent Role="Packaging">
+              <PropertyRef Name="String_Color_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ContosoUniversityModel2StoreContainer">
+          <EntitySet Name="BoughtFlower" EntityType="Self.BoughtFlower" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Buy" EntityType="Self.Buy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Colour" EntityType="Self.Colour" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flower" EntityType="Self.Flower" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FlowersInOrder" EntityType="Self.FlowersInOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FlowerType" EntityType="Self.FlowerType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GreenHouse" EntityType="Self.GreenHouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GreenHousePhones" EntityType="Self.GreenHousePhones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Occasion" EntityType="Self.Occasion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Packaging" EntityType="Self.Packaging" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesPerson" EntityType="Self.SalesPerson" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BoughtFlo__BuyID__74AE54BC" Association="Self.FK__BoughtFlo__BuyID__74AE54BC">
+            <End Role="Buy" EntitySet="Buy" />
+            <End Role="BoughtFlower" EntitySet="BoughtFlower" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BoughtFlo__Flowe__75A278F5" Association="Self.FK__BoughtFlo__Flowe__75A278F5">
+            <End Role="Flower" EntitySet="Flower" />
+            <End Role="BoughtFlower" EntitySet="BoughtFlower" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buy__Greenhouse___5EBF139D" Association="Self.FK__Buy__Greenhouse___5EBF139D">
+            <End Role="GreenHouse" EntitySet="GreenHouse" />
+            <End Role="Buy" EntitySet="Buy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buy__SalesPerson__5FB337D6" Association="Self.FK__Buy__SalesPerson__5FB337D6">
+            <End Role="SalesPerson" EntitySet="SalesPerson" />
+            <End Role="Buy" EntitySet="Buy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flower__Flower_c__693CA210" Association="Self.FK__Flower__Flower_c__693CA210">
+            <End Role="Colour" EntitySet="Colour" />
+            <End Role="Flower" EntitySet="Flower" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flower__Type_ID__68487DD7" Association="Self.FK__Flower__Type_ID__68487DD7">
+            <End Role="FlowerType" EntitySet="FlowerType" />
+            <End Role="Flower" EntitySet="Flower" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FlowersIn__Flowe__797309D9" Association="Self.FK__FlowersIn__Flowe__797309D9">
+            <End Role="Flower" EntitySet="Flower" />
+            <End Role="FlowersInOrder" EntitySet="FlowersInOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GreenHous__Green__5BE2A6F2" Association="Self.FK__GreenHous__Green__5BE2A6F2">
+            <End Role="GreenHouse" EntitySet="GreenHouse" />
+            <End Role="GreenHousePhones" EntitySet="GreenHousePhones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__Customer___6D0D32F4" Association="Self.FK__Order__Customer___6D0D32F4">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__Occasion___6EF57B66" Association="Self.FK__Order__Occasion___6EF57B66">
+            <End Role="Occasion" EntitySet="Occasion" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__Package_I__6E01572D" Association="Self.FK__Order__Package_I__6E01572D">
+            <End Role="Packaging" EntitySet="Packaging" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Packaging__Paper__6477ECF3" Association="Self.FK__Packaging__Paper__6477ECF3">
+            <End Role="Colour" EntitySet="Colour" />
+            <End Role="Packaging" EntitySet="Packaging" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Packaging__Strin__656C112C" Association="Self.FK__Packaging__Strin__656C112C">
+            <End Role="Colour" EntitySet="Colour" />
+            <End Role="Packaging" EntitySet="Packaging" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ContosoUniversityModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BoughtFlower">
+          <Key>
+            <PropertyRef Name="BuyID" />
+            <PropertyRef Name="FlowerID" />
+            <PropertyRef Name="Number" />
+          </Key>
+          <Property Name="BuyID" Type="Int32" Nullable="false" />
+          <Property Name="FlowerID" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" />
+          <NavigationProperty Name="Buy" Relationship="Self.FK__BoughtFlo__BuyID__74AE54BC" FromRole="BoughtFlower" ToRole="Buy" />
+          <NavigationProperty Name="Flower" Relationship="Self.FK__BoughtFlo__Flowe__75A278F5" FromRole="BoughtFlower" ToRole="Flower" />
+        </EntityType>
+        <EntityType Name="Buy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Greenhouse_ID" Type="Int32" />
+          <Property Name="SalesPerson_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Total_peyment" Type="Int32" />
+          <Property Name="Buy_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="BoughtFlower" Relationship="Self.FK__BoughtFlo__BuyID__74AE54BC" FromRole="Buy" ToRole="BoughtFlower" />
+          <NavigationProperty Name="GreenHouse" Relationship="Self.FK__Buy__Greenhouse___5EBF139D" FromRole="Buy" ToRole="GreenHouse" />
+          <NavigationProperty Name="SalesPerson" Relationship="Self.FK__Buy__SalesPerson__5FB337D6" FromRole="Buy" ToRole="SalesPerson" />
+        </EntityType>
+        <EntityType Name="Colour">
+          <Key>
+            <PropertyRef Name="color_ID" />
+          </Key>
+          <Property Name="color_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="color_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Hex_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Flower" Relationship="Self.FK__Flower__Flower_c__693CA210" FromRole="Colour" ToRole="Flower" />
+          <NavigationProperty Name="Packaging" Relationship="Self.FK__Packaging__Paper__6477ECF3" FromRole="Colour" ToRole="Packaging" />
+          <NavigationProperty Name="Packaging1" Relationship="Self.FK__Packaging__Strin__656C112C" FromRole="Colour" ToRole="Packaging" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Addess" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="birthdate" Type="DateTime" Precision="0" />
+          <Property Name="gender" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="total_purchase" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__Order__Customer___6D0D32F4" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Flower">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Flower_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Flower_color_ID" Type="Int32" />
+          <Property Name="Lasting_Time" Type="Int32" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="Type_ID" Type="Int32" />
+          <NavigationProperty Name="BoughtFlower" Relationship="Self.FK__BoughtFlo__Flowe__75A278F5" FromRole="Flower" ToRole="BoughtFlower" />
+          <NavigationProperty Name="Colour" Relationship="Self.FK__Flower__Flower_c__693CA210" FromRole="Flower" ToRole="Colour" />
+          <NavigationProperty Name="FlowerType" Relationship="Self.FK__Flower__Type_ID__68487DD7" FromRole="Flower" ToRole="FlowerType" />
+          <NavigationProperty Name="FlowersInOrder" Relationship="Self.FK__FlowersIn__Flowe__797309D9" FromRole="Flower" ToRole="FlowersInOrder" />
+        </EntityType>
+        <EntityType Name="FlowersInOrder">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+            <PropertyRef Name="Flower_ID" />
+          </Key>
+          <Property Name="Order_ID" Type="Int32" Nullable="false" />
+          <Property Name="Flower_ID" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+          <NavigationProperty Name="Flower" Relationship="Self.FK__FlowersIn__Flowe__797309D9" FromRole="FlowersInOrder" ToRole="Flower" />
+        </EntityType>
+        <EntityType Name="FlowerType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="WaterDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LightDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="More_Info" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Flower" Relationship="Self.FK__Flower__Type_ID__68487DD7" FromRole="FlowerType" ToRole="Flower" />
+        </EntityType>
+        <EntityType Name="GreenHouse">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Manager" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Owner" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Buy" Relationship="Self.FK__Buy__Greenhouse___5EBF139D" FromRole="GreenHouse" ToRole="Buy" />
+          <NavigationProperty Name="GreenHousePhones" Relationship="Self.FK__GreenHous__Green__5BE2A6F2" FromRole="GreenHouse" ToRole="GreenHousePhones" />
+        </EntityType>
+        <EntityType Name="GreenHousePhones">
+          <Key>
+            <PropertyRef Name="GreenHouse_ID" />
+            <PropertyRef Name="Manager_phone" />
+          </Key>
+          <Property Name="GreenHouse_ID" Type="Int32" Nullable="false" />
+          <Property Name="Manager_phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="phone2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="phone3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GreenHouse" Relationship="Self.FK__GreenHous__Green__5BE2A6F2" FromRole="GreenHousePhones" ToRole="GreenHouse" />
+        </EntityType>
+        <EntityType Name="Occasion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Occasion_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__Order__Occasion___6EF57B66" FromRole="Occasion" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_ID" Type="Int32" />
+          <Property Name="Order_type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Shop_date" Type="DateTime" Precision="0" />
+          <Property Name="Occasion_ID" Type="Int32" />
+          <Property Name="Package_ID" Type="Int32" />
+          <Property Name="Wrapping_price" Type="Int32" />
+          <Property Name="Total_Cost" Type="Int32" />
+          <Property Name="Discount" Type="Int32" />
+          <Property Name="Final_Cost" Type="Int32" />
+          <Property Name="More_info" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Order__Customer___6D0D32F4" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="Occasion" Relationship="Self.FK__Order__Occasion___6EF57B66" FromRole="Order" ToRole="Occasion" />
+          <NavigationProperty Name="Packaging" Relationship="Self.FK__Order__Package_I__6E01572D" FromRole="Order" ToRole="Packaging" />
+        </EntityType>
+        <EntityType Name="Packaging">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Packag_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Paper_Color_ID" Type="Int32" />
+          <Property Name="String_Color_ID" Type="Int32" />
+          <Property Name="Design" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Package_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Card" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Colour" Relationship="Self.FK__Packaging__Paper__6477ECF3" FromRole="Packaging" ToRole="Colour" />
+          <NavigationProperty Name="Colour1" Relationship="Self.FK__Packaging__Strin__656C112C" FromRole="Packaging" ToRole="Colour" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__Order__Package_I__6E01572D" FromRole="Packaging" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="SalesPerson">
+          <Key>
+            <PropertyRef Name="PersonnelCode" />
+          </Key>
+          <Property Name="PersonnelCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="national_code" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="working_hour" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="salary" Type="Int32" />
+          <Property Name="birthdate" Type="DateTime" Precision="0" />
+          <Property Name="gender" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="hiring_date" Type="DateTime" Precision="0" />
+          <Property Name="Mobile_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Home_phonenum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Buy" Relationship="Self.FK__Buy__SalesPerson__5FB337D6" FromRole="SalesPerson" ToRole="Buy" />
+        </EntityType>
+        <Association Name="FK__BoughtFlo__BuyID__74AE54BC">
+          <End Role="Buy" Type="Self.Buy" Multiplicity="1" />
+          <End Role="BoughtFlower" Type="Self.BoughtFlower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buy">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BoughtFlower">
+              <PropertyRef Name="BuyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BoughtFlo__Flowe__75A278F5">
+          <End Role="Flower" Type="Self.Flower" Multiplicity="1" />
+          <End Role="BoughtFlower" Type="Self.BoughtFlower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flower">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BoughtFlower">
+              <PropertyRef Name="FlowerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buy__Greenhouse___5EBF139D">
+          <End Role="GreenHouse" Type="Self.GreenHouse" Multiplicity="0..1" />
+          <End Role="Buy" Type="Self.Buy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GreenHouse">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Buy">
+              <PropertyRef Name="Greenhouse_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buy__SalesPerson__5FB337D6">
+          <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="0..1" />
+          <End Role="Buy" Type="Self.Buy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesPerson">
+              <PropertyRef Name="PersonnelCode" />
+            </Principal>
+            <Dependent Role="Buy">
+              <PropertyRef Name="SalesPerson_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flower__Flower_c__693CA210">
+          <End Role="Colour" Type="Self.Colour" Multiplicity="0..1" />
+          <End Role="Flower" Type="Self.Flower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colour">
+              <PropertyRef Name="color_ID" />
+            </Principal>
+            <Dependent Role="Flower">
+              <PropertyRef Name="Flower_color_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Packaging__Paper__6477ECF3">
+          <End Role="Colour" Type="Self.Colour" Multiplicity="0..1" />
+          <End Role="Packaging" Type="Self.Packaging" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colour">
+              <PropertyRef Name="color_ID" />
+            </Principal>
+            <Dependent Role="Packaging">
+              <PropertyRef Name="Paper_Color_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Packaging__Strin__656C112C">
+          <End Role="Colour" Type="Self.Colour" Multiplicity="0..1" />
+          <End Role="Packaging" Type="Self.Packaging" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colour">
+              <PropertyRef Name="color_ID" />
+            </Principal>
+            <Dependent Role="Packaging">
+              <PropertyRef Name="String_Color_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order__Customer___6D0D32F4">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Customer_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flower__Type_ID__68487DD7">
+          <End Role="FlowerType" Type="Self.FlowerType" Multiplicity="0..1" />
+          <End Role="Flower" Type="Self.Flower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlowerType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Flower">
+              <PropertyRef Name="Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FlowersIn__Flowe__797309D9">
+          <End Role="Flower" Type="Self.Flower" Multiplicity="1" />
+          <End Role="FlowersInOrder" Type="Self.FlowersInOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flower">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FlowersInOrder">
+              <PropertyRef Name="Flower_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GreenHous__Green__5BE2A6F2">
+          <End Role="GreenHouse" Type="Self.GreenHouse" Multiplicity="1" />
+          <End Role="GreenHousePhones" Type="Self.GreenHousePhones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GreenHouse">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GreenHousePhones">
+              <PropertyRef Name="GreenHouse_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order__Occasion___6EF57B66">
+          <End Role="Occasion" Type="Self.Occasion" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Occasion">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Occasion_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order__Package_I__6E01572D">
+          <End Role="Packaging" Type="Self.Packaging" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packaging">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Package_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ContosoUniversityEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BoughtFlower" EntityType="Self.BoughtFlower" />
+          <EntitySet Name="Buy" EntityType="Self.Buy" />
+          <EntitySet Name="Colour" EntityType="Self.Colour" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="Flower" EntityType="Self.Flower" />
+          <EntitySet Name="FlowersInOrder" EntityType="Self.FlowersInOrder" />
+          <EntitySet Name="FlowerType" EntityType="Self.FlowerType" />
+          <EntitySet Name="GreenHouse" EntityType="Self.GreenHouse" />
+          <EntitySet Name="GreenHousePhones" EntityType="Self.GreenHousePhones" />
+          <EntitySet Name="Occasion" EntityType="Self.Occasion" />
+          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="Packaging" EntityType="Self.Packaging" />
+          <EntitySet Name="SalesPerson" EntityType="Self.SalesPerson" />
+          <AssociationSet Name="FK__BoughtFlo__BuyID__74AE54BC" Association="Self.FK__BoughtFlo__BuyID__74AE54BC">
+            <End Role="Buy" EntitySet="Buy" />
+            <End Role="BoughtFlower" EntitySet="BoughtFlower" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BoughtFlo__Flowe__75A278F5" Association="Self.FK__BoughtFlo__Flowe__75A278F5">
+            <End Role="Flower" EntitySet="Flower" />
+            <End Role="BoughtFlower" EntitySet="BoughtFlower" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buy__Greenhouse___5EBF139D" Association="Self.FK__Buy__Greenhouse___5EBF139D">
+            <End Role="GreenHouse" EntitySet="GreenHouse" />
+            <End Role="Buy" EntitySet="Buy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buy__SalesPerson__5FB337D6" Association="Self.FK__Buy__SalesPerson__5FB337D6">
+            <End Role="SalesPerson" EntitySet="SalesPerson" />
+            <End Role="Buy" EntitySet="Buy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flower__Flower_c__693CA210" Association="Self.FK__Flower__Flower_c__693CA210">
+            <End Role="Colour" EntitySet="Colour" />
+            <End Role="Flower" EntitySet="Flower" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Packaging__Paper__6477ECF3" Association="Self.FK__Packaging__Paper__6477ECF3">
+            <End Role="Colour" EntitySet="Colour" />
+            <End Role="Packaging" EntitySet="Packaging" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Packaging__Strin__656C112C" Association="Self.FK__Packaging__Strin__656C112C">
+            <End Role="Colour" EntitySet="Colour" />
+            <End Role="Packaging" EntitySet="Packaging" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__Customer___6D0D32F4" Association="Self.FK__Order__Customer___6D0D32F4">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flower__Type_ID__68487DD7" Association="Self.FK__Flower__Type_ID__68487DD7">
+            <End Role="FlowerType" EntitySet="FlowerType" />
+            <End Role="Flower" EntitySet="Flower" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FlowersIn__Flowe__797309D9" Association="Self.FK__FlowersIn__Flowe__797309D9">
+            <End Role="Flower" EntitySet="Flower" />
+            <End Role="FlowersInOrder" EntitySet="FlowersInOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GreenHous__Green__5BE2A6F2" Association="Self.FK__GreenHous__Green__5BE2A6F2">
+            <End Role="GreenHouse" EntitySet="GreenHouse" />
+            <End Role="GreenHousePhones" EntitySet="GreenHousePhones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__Occasion___6EF57B66" Association="Self.FK__Order__Occasion___6EF57B66">
+            <End Role="Occasion" EntitySet="Occasion" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__Package_I__6E01572D" Association="Self.FK__Order__Package_I__6E01572D">
+            <End Role="Packaging" EntitySet="Packaging" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ContosoUniversityModel2StoreContainer" CdmEntityContainer="ContosoUniversityEntities1">
+          <EntitySetMapping Name="BoughtFlower">
+            <EntityTypeMapping TypeName="ContosoUniversityModel2.BoughtFlower">
+              <MappingFragment StoreEntitySet="BoughtFlower">
+                <ScalarProperty Name="BuyID" ColumnName="BuyID" />
+                <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buy">
+            <EntityTypeMapping TypeName="ContosoUniversityModel2.Buy">
+              <MappingFragment StoreEntitySet="Buy">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Greenhouse_ID" ColumnName="Greenhouse_ID" />
+                <ScalarProperty Name="SalesPerson_ID" ColumnName="SalesPerson_ID" />
+                <ScalarProperty Name="Total_peyment" ColumnName="Total_peyment" />
+                <ScalarProperty Name="Buy_date" ColumnName="Buy_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colour">
+            <EntityTypeMapping TypeName="ContosoUniversityModel2.Colour">
+              <MappingFragment StoreEntitySet="Colour">
+                <ScalarProperty Name="color_ID" ColumnName="color_ID" />
+                <ScalarProperty Name="color_name" ColumnName="color_name" />
+                <ScalarProperty Name="Hex_Code" ColumnName="Hex_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="ContosoUniversityModel2.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="Addess" ColumnName="Addess" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="total_purchase" ColumnName="total_purchase" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flower">
+            <EntityTypeMapping TypeName="ContosoUniversityModel2.Flower">
+              <MappingFragment StoreEntitySet="Flower">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Flower_name" ColumnName="Flower_name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Flower_color_ID" ColumnName="Flower_color_ID" />
+                <ScalarProperty Name="Lasting_Time" ColumnName="Lasting_Time" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Type_ID" ColumnName="Type_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlowersInOrder">
+            <EntityTypeMapping TypeName="ContosoUniversityModel2.FlowersInOrder">
+              <MappingFragment StoreEntitySet="FlowersInOrder">
+                <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+                <ScalarProperty Name="Flower_ID" ColumnName="Flower_ID" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlowerType">
+            <EntityTypeMapping TypeName="ContosoUniversityModel2.FlowerType">
+              <MappingFragment StoreEntitySet="FlowerType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="WaterDescription" ColumnName="WaterDescription" />
+                <ScalarProperty Name="LightDescription" ColumnName="LightDescription" />
+                <ScalarProperty Name="More_Info" ColumnName="More_Info" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GreenHouse">
+            <EntityTypeMapping TypeName="ContosoUniversityModel2.GreenHouse">
+              <MappingFragment StoreEntitySet="GreenHouse">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GreenHousePhones">
+            <EntityTypeMapping TypeName="ContosoUniversityModel2.GreenHousePhones">
+              <MappingFragment StoreEntitySet="GreenHousePhones">
+                <ScalarProperty Name="GreenHouse_ID" ColumnName="GreenHouse_ID" />
+                <ScalarProperty Name="Manager_phone" ColumnName="Manager_phone" />
+                <ScalarProperty Name="phone1" ColumnName="phone1" />
+                <ScalarProperty Name="phone2" ColumnName="phone2" />
+                <ScalarProperty Name="phone3" ColumnName="phone3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Occasion">
+            <EntityTypeMapping TypeName="ContosoUniversityModel2.Occasion">
+              <MappingFragment StoreEntitySet="Occasion">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Occasion_Description" ColumnName="Occasion_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="ContosoUniversityModel2.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="Order_type" ColumnName="Order_type" />
+                <ScalarProperty Name="Shop_date" ColumnName="Shop_date" />
+                <ScalarProperty Name="Occasion_ID" ColumnName="Occasion_ID" />
+                <ScalarProperty Name="Package_ID" ColumnName="Package_ID" />
+                <ScalarProperty Name="Wrapping_price" ColumnName="Wrapping_price" />
+                <ScalarProperty Name="Total_Cost" ColumnName="Total_Cost" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Final_Cost" ColumnName="Final_Cost" />
+                <ScalarProperty Name="More_info" ColumnName="More_info" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packaging">
+            <EntityTypeMapping TypeName="ContosoUniversityModel2.Packaging">
+              <MappingFragment StoreEntitySet="Packaging">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Packag_Type" ColumnName="Packag_Type" />
+                <ScalarProperty Name="Paper_Color_ID" ColumnName="Paper_Color_ID" />
+                <ScalarProperty Name="String_Color_ID" ColumnName="String_Color_ID" />
+                <ScalarProperty Name="Design" ColumnName="Design" />
+                <ScalarProperty Name="Package_Description" ColumnName="Package_Description" />
+                <ScalarProperty Name="Card" ColumnName="Card" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesPerson">
+            <EntityTypeMapping TypeName="ContosoUniversityModel2.SalesPerson">
+              <MappingFragment StoreEntitySet="SalesPerson">
+                <ScalarProperty Name="PersonnelCode" ColumnName="PersonnelCode" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="national_code" ColumnName="national_code" />
+                <ScalarProperty Name="working_hour" ColumnName="working_hour" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="hiring_date" ColumnName="hiring_date" />
+                <ScalarProperty Name="Mobile_number" ColumnName="Mobile_number" />
+                <ScalarProperty Name="Home_phonenum" ColumnName="Home_phonenum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

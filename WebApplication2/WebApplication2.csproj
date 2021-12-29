@@ -147,17 +147,61 @@
     <Compile Include="Controllers\ConsigneeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\TestController.bk.cs" />
     <Compile Include="Controllers\user_infoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BoughtFlower.cs">
+      <DependentUpon>Flower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BoughtReportVM.cs" />
+    <Compile Include="Models\Buy.cs">
+      <DependentUpon>Flower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Colour.cs">
+      <DependentUpon>Flower.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\consignee_manageme.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\consignee_manageme_edit.cs" />
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>Flower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Flower.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Flower.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Flower.cs">
+      <DependentUpon>Flower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Flower.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Flower.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Flower1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Flower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FlowersInOrder.cs">
+      <DependentUpon>Flower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FlowerType.cs">
+      <DependentUpon>Flower.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\goods_info.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GreenHouse.cs">
+      <DependentUpon>Flower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GreenHousePhones.cs">
+      <DependentUpon>Flower.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -173,6 +217,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Occasion.cs">
+      <DependentUpon>Flower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>Flower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Packaging.cs">
+      <DependentUpon>Flower.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Person.Context.cs">
       <AutoGen>True</AutoGen>
@@ -191,6 +244,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Person.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalesPerson.cs">
+      <DependentUpon>Flower.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\user_info.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -216,6 +272,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Flower.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Flower.edmx</DependentUpon>
+      <LastGenOutput>Flower.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Flower.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Flower.edmx</DependentUpon>
+      <LastGenOutput>Flower1.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -253,6 +319,13 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Compile Include="Models\consignee_manageme.Partial.cs" />
+    <EntityDeploy Include="Models\Flower.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Flower.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Flower.edmx.diagram">
+      <DependentUpon>Flower.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -301,6 +374,9 @@
     <Content Include="Views\Consignee\Edit.cshtml" />
     <Content Include="Views\Consignee\Details.cshtml" />
     <Content Include="Views\Consignee\Delete.cshtml" />
+    <Content Include="Views\Reports\BuyReports.cshtml" />
+    <Content Include="Views\Reports\BuyReports02.cshtml" />
+    <Content Include="Views\Reports\BuyReports03.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eeac0b4248284160abb5ce2634a8d7d1" Name="Diagram1">
+        <EntityTypeShape EntityType="ContosoUniversityModel2.BoughtFlower" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContosoUniversityModel2.Buy" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContosoUniversityModel2.Colour" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContosoUniversityModel2.Customer" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContosoUniversityModel2.Flower" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContosoUniversityModel2.FlowersInOrder" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContosoUniversityModel2.FlowerType" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContosoUniversityModel2.GreenHouse" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContosoUniversityModel2.GreenHousePhones" Width="1.5" PointX="3" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContosoUniversityModel2.Occasion" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContosoUniversityModel2.Order" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContosoUniversityModel2.Packaging" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContosoUniversityModel2.SalesPerson" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <AssociationConnector Association="ContosoUniversityModel2.FK__BoughtFlo__BuyID__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="ContosoUniversityModel2.FK__BoughtFlo__Flowe__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="ContosoUniversityModel2.FK__Buy__Greenhouse___5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="ContosoUniversityModel2.FK__Buy__SalesPerson__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="ContosoUniversityModel2.FK__Flower__Flower_c__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="ContosoUniversityModel2.FK__Packaging__Paper__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="ContosoUniversityModel2.FK__Packaging__Strin__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="ContosoUniversityModel2.FK__Order__Customer___6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="ContosoUniversityModel2.FK__Flower__Type_ID__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="ContosoUniversityModel2.FK__FlowersIn__Flowe__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="ContosoUniversityModel2.FK__GreenHous__Green__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="ContosoUniversityModel2.FK__Order__Occasion___6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="ContosoUniversityModel2.FK__Order__Package_I__6E01572D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
