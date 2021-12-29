@@ -4,17 +4,18 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ContosoUniversityModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ContosoUniversityModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="consignee_manageme">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="consignee_name" Type="varchar" MaxLength="50" />
+          <Property Name="consignee_name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="consignee_address" Type="varchar" MaxLength="1000" />
           <Property Name="consignee_code" Type="varchar" MaxLength="10" />
           <Property Name="cinsignee_phone" Type="varchar" MaxLength="11" />
           <Property Name="user_info_user_id" Type="int" Nullable="false" />
+          <Property Name="Memo" Type="nvarchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="goods_info">
           <Key>
@@ -34,7 +35,7 @@
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="user_name" Type="varchar" MaxLength="45" />
           <Property Name="user_sex" Type="varchar" MaxLength="10" />
-          <Property Name="user_phone" Type="varchar" MaxLength="11" />
+          <Property Name="user_phone" Type="varchar" MaxLength="12" />
           <Property Name="user_pw" Type="varchar" MaxLength="100" />
           <Property Name="user_state" Type="varchar" MaxLength="10" />
         </EntityType>
@@ -61,8 +62,7 @@
             <End Role="consignee_manageme" EntitySet="consignee_manageme" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ContosoUniversityModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -71,12 +71,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="consignee_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="consignee_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="consignee_address" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="consignee_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="cinsignee_phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
           <Property Name="user_info_user_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="user_info" Relationship="Self.FK_consignee_manageme" FromRole="consignee_manageme" ToRole="user_info" />
+          <Property Name="Memo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="goods_info">
           <Key>
@@ -96,7 +97,7 @@
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="user_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="user_sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="user_phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="user_phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="user_pw" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="user_state" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="consignee_manageme" Relationship="Self.FK_consignee_manageme" FromRole="user_info" ToRole="consignee_manageme" />
@@ -133,6 +134,7 @@
           <EntitySetMapping Name="consignee_manageme">
             <EntityTypeMapping TypeName="ContosoUniversityModel1.consignee_manageme">
               <MappingFragment StoreEntitySet="consignee_manageme">
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="consignee_name" ColumnName="consignee_name" />
                 <ScalarProperty Name="consignee_address" ColumnName="consignee_address" />
