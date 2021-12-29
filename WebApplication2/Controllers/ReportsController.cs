@@ -84,5 +84,23 @@ namespace WebApplication2.Controllers
             return View("BuyReports03", data);
         }
 
+        public ActionResult BuyReports04(int id)
+        {
+            var data = db.GetBuyReport(id);
+
+            ViewBag.SQL = builder.ToString();
+
+            return View("BuyReports04", data);
+        }
+
+        public ActionResult BuyReports05(int id)
+        {
+            var data = db.Database.SqlQuery<GetBuyReport_Result>("EXEC GetBuyReport @p0", id).ToList();
+
+            ViewBag.SQL = builder.ToString();
+
+            return View("BuyReports05", data);
+        }
+
     }
 }

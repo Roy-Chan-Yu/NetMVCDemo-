@@ -12,6 +12,8 @@ namespace WebApplication2.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ContosoUniversityEntities1 : DbContext
     {
@@ -38,5 +40,14 @@ namespace WebApplication2.Models
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Packaging> Packaging { get; set; }
         public virtual DbSet<SalesPerson> SalesPerson { get; set; }
+    
+        public virtual ObjectResult<GetBuyReport_Result> GetBuyReport(Nullable<int> buyID)
+        {
+            var buyIDParameter = buyID.HasValue ?
+                new ObjectParameter("BuyID", buyID) :
+                new ObjectParameter("BuyID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBuyReport_Result>("GetBuyReport", buyIDParameter);
+        }
     }
 }

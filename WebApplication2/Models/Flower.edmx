@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ContosoUniversityModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ContosoUniversityModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BoughtFlower">
           <Key>
             <PropertyRef Name="BuyID" />
@@ -309,6 +309,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetBuyReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BuyID" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="ContosoUniversityModel2StoreContainer">
           <EntitySet Name="BoughtFlower" EntityType="Self.BoughtFlower" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Buy" EntityType="Self.Buy" Schema="dbo" store:Type="Tables" />
@@ -376,8 +379,7 @@
             <End Role="Packaging" EntitySet="Packaging" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ContosoUniversityModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -777,7 +779,16 @@
             <End Role="Packaging" EntitySet="Packaging" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
+          <FunctionImport Name="GetBuyReport" ReturnType="Collection(ContosoUniversityModel2.GetBuyReport_Result)">
+            <Parameter Name="BuyID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="GetBuyReport_Result">
+          <Property Type="Int32" Name="BuyID" Nullable="false" />
+          <Property Type="Int32" Name="FlowerCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalCost" Nullable="true" />
+          <Property Type="Double" Name="AvgCost" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -941,6 +952,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetBuyReport" FunctionName="ContosoUniversityModel2.Store.GetBuyReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ContosoUniversityModel2.GetBuyReport_Result">
+                <ScalarProperty Name="BuyID" ColumnName="BuyID" />
+                <ScalarProperty Name="FlowerCount" ColumnName="FlowerCount" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="AvgCost" ColumnName="AvgCost" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
