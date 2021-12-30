@@ -221,6 +221,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\MustBeEvenAttribute.cs" />
     <Compile Include="Models\Occasion.cs">
       <DependentUpon>Flower.tt</DependentUpon>
     </Compile>
@@ -382,6 +383,7 @@
     <Content Include="Views\Reports\BuyReports03.cshtml" />
     <Content Include="Views\Reports\BuyReports04.cshtml" />
     <Content Include="Views\Reports\BuyReports05.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

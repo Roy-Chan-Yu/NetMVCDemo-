@@ -31,7 +31,7 @@ namespace WebApplication2.Controllers
         // GET: Reports
         public ActionResult Index()
         {
-            return View();
+            return View(db.BoughtFlower.ToList());
         }
 
         public ActionResult BuyReports()

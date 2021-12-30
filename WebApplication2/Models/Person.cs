@@ -11,11 +11,28 @@ namespace WebApplication2.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Person
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class Person : IValidatableObject
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Nullable<int> Age { get; set; }
+        [Required]
+        [MustBeEven(ErrorMessage = "請輸入偶數的Age資料")]
+        public int Age { get; set; }
+
+        /**
+         * The Last Validation
+         * */
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+
+            if (this.Name != "Roy" && this.Age > 22)
+            {
+                yield return new ValidationResult("您的權限不足且無法享有學生優惠", new string[] { "Name", "Age" });
+            }
+
+            yield return ValidationResult.Success;
+        }
     }
 }

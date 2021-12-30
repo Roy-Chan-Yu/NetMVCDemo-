@@ -11,7 +11,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
-          <Property Name="Age" Type="int" />
+          <Property Name="Age" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ContosoUniversityModelStoreContainer">
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
@@ -26,7 +26,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Age" Type="Int32" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ContosoUniversityEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Person" EntityType="Self.Person" />
