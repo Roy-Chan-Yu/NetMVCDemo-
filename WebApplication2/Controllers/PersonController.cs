@@ -10,7 +10,7 @@ using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
-    public class PersonController : Controller
+    public class PersonController : BaseController
     {
         private ContosoUniversityEntities db = new ContosoUniversityEntities();
 

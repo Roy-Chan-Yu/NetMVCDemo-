@@ -7,7 +7,7 @@ using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
-    public class TestController : Controller
+    public class TestController : BaseController
     {
         static List<Person> data = new List<Person>()
         {

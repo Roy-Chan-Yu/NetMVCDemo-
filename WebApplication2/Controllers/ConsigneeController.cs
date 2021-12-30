@@ -9,9 +9,12 @@ using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
-    public class ConsigneeController : Controller
+    public class ConsigneeController : BaseController
     {
         ContosoUniversityEntities2 db = new ContosoUniversityEntities2();
+
+
+
         // GET: Consignee
         public ActionResult Index()
         {

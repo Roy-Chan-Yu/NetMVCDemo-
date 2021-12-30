@@ -9,7 +9,7 @@ using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
-    public class ReportsController : Controller
+    public class ReportsController : BaseController
     {
         ContosoUniversityEntities1 db = new ContosoUniversityEntities1();
         StringBuilder builder = new StringBuilder();
@@ -27,6 +27,9 @@ namespace WebApplication2.Controllers
 
             Debug.WriteLine("Exit Constrictor");
         }
+
+
+
 
         // GET: Reports
         public ActionResult Index()

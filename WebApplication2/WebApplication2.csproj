@@ -144,6 +144,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ARController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ConsigneeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
@@ -206,6 +208,7 @@
     <Compile Include="Models\GreenHousePhones.cs">
       <DependentUpon>Flower.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\IConsigneeRepository.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -249,6 +252,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Person.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Repository\ConsigneeRepository.cs" />
     <Compile Include="Models\SalesPerson.cs">
       <DependentUpon>Flower.tt</DependentUpon>
     </Compile>
@@ -268,6 +272,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\800px-耿鬼_SS002.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -384,9 +389,12 @@
     <Content Include="Views\Reports\BuyReports04.cshtml" />
     <Content Include="Views\Reports\BuyReports05.cshtml" />
     <Content Include="Views\Reports\Index.cshtml" />
+    <Content Include="Views\AR\Index.cshtml" />
+    <Content Include="Views\AR\FileTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
